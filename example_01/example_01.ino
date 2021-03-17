@@ -8,5 +8,10 @@ void setup()
 
 void loop() 
 {
+  
   Serial.print("Hello World\n");
+
+  char value = Serial.read() ;
+  Serial.print("value = ") ;
+  Serial.println(value) ;
 }
