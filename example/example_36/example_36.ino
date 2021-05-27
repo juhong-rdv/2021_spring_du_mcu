@@ -66,6 +66,8 @@ void setup()
   DDRD = 0xFF ; //1111 1111  
   
   //LCD 초기화
+
+  delay(100) ;
   
   //0x30 명령 전달
   LCD_Command_Write(0x30) ;
