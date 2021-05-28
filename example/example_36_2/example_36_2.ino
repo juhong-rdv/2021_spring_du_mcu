@@ -6,6 +6,8 @@
 
 void LCD_Command_Write(unsigned char cmd)
 {
+  delay(1) ;
+  
   digitalWrite(RS, LOW) ; //RS -> LOW -> 명령
   digitalWrite(RW, LOW) ; //RW -> LOW -> 쓰기
   digitalWrite(EN, HIGH) ;  //E -> HIGH
@@ -19,10 +21,14 @@ void LCD_Command_Write(unsigned char cmd)
   //4.1msec delay
   //delayMicroseconds(4100) ;
 
+  delay(1) ;
+
 }
 
 void LCD_Data_Write(unsigned char data)
 {
+  delay(1) ;
+  
   digitalWrite(RS, HIGH) ;  //RS -> HIGH -> 데이터
   digitalWrite(RW, LOW) ; //RW -> LOW -> 쓰기
   digitalWrite(EN, HIGH) ;  //E -> HIGH
@@ -35,6 +41,8 @@ void LCD_Data_Write(unsigned char data)
   
   //4.1msec delay
   //delayMicroseconds(4100) ;
+
+  delay(1) ;
 }
 
 void LCD_String_Write(const int line, char *string, const int size)

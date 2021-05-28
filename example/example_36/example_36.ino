@@ -6,6 +6,8 @@
 
 void LCD_Command_Write(unsigned char cmd)
 {
+  delay(1) ;
+  
   digitalWrite(RS, LOW) ; //RS -> LOW -> 명령
   digitalWrite(RW, LOW) ; //RW -> LOW -> 쓰기
   digitalWrite(EN, HIGH) ;  //E -> HIGH
@@ -16,10 +18,14 @@ void LCD_Command_Write(unsigned char cmd)
   digitalWrite(EN, LOW) ; //E -> LOW
   delayMicroseconds(1) ;
 
+  delay(1) ;
+
 }
 
 void LCD_Data_Write(unsigned char data)
 {
+  delay(1) ;
+  
   digitalWrite(RS, HIGH) ;  //RS -> HIGH -> 데이터
   digitalWrite(RW, LOW) ; //RW -> LOW -> 쓰기
   digitalWrite(EN, HIGH) ;  //E -> HIGH
@@ -29,8 +35,11 @@ void LCD_Data_Write(unsigned char data)
   
   digitalWrite(EN, LOW) ; //E -> LOW
   delayMicroseconds(1) ;
+
+  delay(1) ;
 }
 
+//char string[16] = "Dong Se" ;
 void LCD_String_Write(const int line, char *string, const int size)
 {
   unsigned char line_address = 0x00 ;
@@ -50,10 +59,11 @@ void LCD_String_Write(const int line, char *string, const int size)
   
   for( int i=0 ; i<size ; i++ )
   {
-    LCD_Command_Write(0x80 | (line_address+i)) ;  //위치를 변경
+    LCD_Command_Write(0x80 | ( line_address+i )) ;  //위치를 변경
     LCD_Data_Write(string[i]) ;
-  
   }
+
+  delay(100) ;
   
 }
 
